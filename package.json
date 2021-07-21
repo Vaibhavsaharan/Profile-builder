@@ -2,19 +2,34 @@
   "name": "profile-builder",
   "version": "0.1.0",
   "private": true,
+  "main": "function.js",
   "scripts": {
+    "clean": "rimraf nextServer/",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "predeploy": "npm run clean && next build",
+    "deploy": "firebase deploy --only functions:nextServer,hosting"
   },
   "dependencies": {
+    "cross-env": "^7.0.3",
+    "firebase-admin": "^9.11.0",
+    "firebase-functions": "^3.14.1",
+    "gray-matter": "^4.0.3",
     "next": "11.0.1",
+    "raw-loader": "^4.0.2",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-markdown": "^6.0.2"
   },
   "devDependencies": {
     "eslint": "7.31.0",
     "eslint-config-next": "11.0.1"
+  },
+    "browser": {
+    "fs": false,
+    "path": false,
+    "os": false
   }
 }
